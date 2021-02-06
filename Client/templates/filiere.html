@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{data[0]['fields']['filiere']}}</h1>
+
+<div id="page">
+    <div id="liste">
+        {% for fil in data : %}
+        <ul class="list-group">
+            <li class="list-group-item">numero d'enregistrement: {{fil['recordid']}}</li>
+            <li class="list-group-item">region : {{fil['fields']['region']}}</li>
+            <li class="list-group-item">commune : {{fil['fields']['libelle_commune']}}</li>
+            <li class="list-group-item">département : {{fil['fields']['libelle_departement']}}</li>
+            <li class="list-group-item">année : {{fil['fields']['annee']}}</li>
+            <li class="list-group-item">pdl : {{fil['fields']['pdl']}}</li>
+            <li class="list-group-item">conso : {{fil['fields']['conso']}}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    <div id="clavier">
+        <fieldset>
+        </fieldset>
+    </div>
+</div>
+
+
+{% endblock %}
