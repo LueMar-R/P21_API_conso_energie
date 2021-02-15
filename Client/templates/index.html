@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    </head>
+    <body>
+        <h1>{{ region[1] }}</h1>
+        <form method="post">
+            <label for="region">Region :</label>
+        <select name="region" id="region">
+        {% for i in region %} 
+
+            <option>{{ i }}</option>
+        {% endfor %}
+            <input name="btn_submit" type="submit" value="ok" id="btn_submit" class="button"/>
+        </form>
+        <div class="map", id="map"></div>
+        <script>
+            var graphs = {{plot | safe}};
+            Plotly.plot('map',graphs,{})
+        </script>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    </head>
+    <body>
+        <form method="post">
+            <label for="dep">Département :</label>
+        <select name="dep" id="dep">
+        {% for i in region %} 
+
+            <option>{{ i }}</option>
+        {% endfor %}
+            <input name="btn_submit" type="submit" value="ok" id="btn_submit" class="button"/>
+        </form>
+
+        <div class="map", id="map"></div>
+        <div class="d-flex justify-content-around">
+            <div>
+                <div class="map2", id="map2"></div>
+            </div>
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Total de consommation de : {{ reg}}</h5>
+                    <p class="card-text", style="font-size: 50px;">{{total}}</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            var graphs = {{plot | safe}};
+            Plotly.plot('map',graphs,{})
+            var graphs = {{plot2 | safe}};
+            Plotly.plot('map2',graphs,{})
+        </script>
+    </body>
+</html>
