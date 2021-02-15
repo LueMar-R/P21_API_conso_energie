@@ -59,7 +59,7 @@ def delete_one(recordid):
     return "document supprimé"
 
 
-@app.route("/<string:dpt>",methods=('GET','POST'))
+@app.route("/dashboard/<string:dpt>",methods=('GET','POST'))
 def html(dpt):
     if request.method =='POST':
         dpt = str(request.values.get('dep'))
