@@ -9,15 +9,21 @@ Aude Guillaume Ludivine
 Cette API a été réalisée en untilisant les données du portail opendata de [l'agence ORE](https://opendata.agenceore.fr/explore/dataset/conso-elec-gaz-annuelle-par-naf-agregee-iris/information/)
 
 Pour la partie serveur :
--Fast API
--uvicorn
--MongoAtlas pour lhébergement des données, et pymongo pour la communication avec la base de données.
+- Fast API
+- uvicorn
+- MongoAtlas pour lhébergement des données, et pymongo pour la communication avec la base de données.
 
 Pour la partie client :
--Flask 
--Plotly pour la visualisation graphique
+- Flask
+- Plotly pour la visualisation graphique
 
-
+Requirements :
+* `pip install plotly`
+* `pip install Flask`
+* `pip install Flask-PyMongo`
+* `pip install fastapi`
+* `pip install uvicorn`
+* `pip install plotly`
 
 
 ______
