@@ -17,6 +17,23 @@ Pour la partie client :
 - Flask
 - Plotly pour la visualisation graphique
 
+### Endpoints
+
+- toutes les infos sur une filière : /filiere/<string:filiere>
+- toutes les infos sur une région" : /region/<int:code_region>
+- infos d'une document : /record/<string:recordid>
+- modifier un document : /update/<string:recordid>
+- supprimer un document : /delete/<string:recordid>
+- consommations d'une filière par département: /filiere_dpt/<string:filiere>/<string:departement>
+
+
+[Capture1.PNG](images/Capture1.PNG)
+[Capture2.PNG](images/Capture2.PNG)
+[Capture3.PNG](images/Capture3.PNG)
+
+
+______
+
 Requirements :
 * `pip install plotly`
 * `pip install Flask`
@@ -24,8 +41,6 @@ Requirements :
 * `pip install fastapi`
 * `pip install uvicorn`
 * `pip install plotly`
-
-
 ______
 
 Lien vers le tableau Trello : https://trello.com/b/Q6TWe6fp/energie
