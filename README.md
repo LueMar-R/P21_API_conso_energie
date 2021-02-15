@@ -27,10 +27,14 @@ Pour la partie client :
 - consommations d'une filière par département: /filiere_dpt/<string:filiere>/<string:departement>
 
 
-[Capture1.PNG](images/Capture1.PNG)
-[Capture2.PNG](images/Capture2.PNG)
-[Capture3.PNG](images/Capture3.PNG)
+![Capture1.PNG](images/Capture1.PNG)
 
+![Capture2.PNG](images/Capture2.PNG)
+
+![Capture3.PNG](images/Capture3.PNG)
+
+
+![Capture4.PNG](images/Capture4.PNG)
 
 ______
 
