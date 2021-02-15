@@ -82,3 +82,39 @@ class DataAccess :
         cls.db.delete_one({"recordid":recordid})
         cls.deconnexion()
         return "suppression"
+
+    @classmethod
+    def get_all_region(cls):
+        result = cls.db.distinct("fields.libelle_region")
+        return list(result)
+
+
+    @classmethod
+    def get_elec_gaz(cls,libelle_region):
+        gaz = list(cls.db.aggregate( [ 
+            {"$match":{"fields.filiere": "Gaz", "fields.libelle_region": libelle_region }}, 
+            {"$group":{"_id" : "$fields.code_region", "total":{"$sum":"$fields.conso"}}} 
+            ]))
+        elec = list(cls.db.aggregate( [ 
+            {"$match":{"fields.filiere": "Electricité", "fields.libelle_region": libelle_region }},
+            {"$group":{"_id" : "$fields.code_region", "total":{"$sum":"$fields.conso"}}} 
+            ]))
+        if len(gaz) > 0:
+            gaz = round(gaz[0]["total"])
+        else: 
+            gaz = 0
+        if len(elec) > 0:
+            elec = round((elec)[0]["total"])
+        else:
+            elec = 0
+        return {"gaz":gaz, "elec":elec}
+
+    @classmethod
+    def info_region(cls,libelle_region):
+        result = list(cls.db.find({"fields.libelle_region": libelle_region},
+                         {"_id":0, 'fields.libelle_departement':1,
+                          "fields.filiere":1,
+                         "fields.operateur":1,
+                         "fields.conso": 1}))
+                 
+        return result

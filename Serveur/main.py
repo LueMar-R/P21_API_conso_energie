@@ -46,6 +46,22 @@ def filiere_dpt(filiere: str, dpt:str):
     return {"filiere": result}
 
 
+@api.get("/all_region")
+def all_region():
+    da.connexion()
+    result = da.get_all_region()
+    da.deconnexion()
+    return {"all_region": result}
+
+@api.get("/conso/{region}")
+def conso(region: str):
+    da.connexion()
+    result = da.get_elec_gaz(region)
+    info_region = da.info_region(region)
+    da.deconnexion()
+    return {"conso": result, "info_region": info_region}
+
+
 
 
 

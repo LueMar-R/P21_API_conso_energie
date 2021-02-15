@@ -3,6 +3,9 @@
 import requests 
 from flask import jsonify, Flask, render_template, request, url_for, flash, redirect
 import json
+import plotly.express as px
+from graph import Graph
+import plotly
 
 app= Flask(__name__)
 
@@ -54,6 +57,38 @@ def update_one(recordid):
 def delete_one(recordid):
     reponse = requests.delete(URL_API+"/delete/"+recordid)	
     return "document supprimé"
+
+
+@app.route("/<string:dpt>",methods=('GET','POST'))
+def html(dpt):
+    if request.method =='POST':
+        dpt = str(request.values.get('dep'))
+        reponse = requests.get(URL_API+"/all_region")
+        all_region = json.loads(reponse.text)
+
+        reponse = requests.get(URL_API+"/conso/"+dpt)
+        conso = json.loads(reponse.text)["conso"]
+        graphJSON = Graph().graph_bar_conso(conso["elec"], conso["gaz"])
+        total = conso["elec"] + conso["gaz"]
+
+        info_region = json.loads(reponse.text)["info_region"]
+        graphJSON2 = Graph().graph_sunburst_info_region(info_region)
+
+        return render_template("index.html", region=all_region["all_region"], plot=graphJSON, plot2=graphJSON2, total=total, reg=dpt)
+
+    reponse = requests.get(URL_API+"/all_region")
+    all_region = json.loads(reponse.text)
+
+    reponse = requests.get(URL_API+"/conso/"+dpt)
+    conso = json.loads(reponse.text)["conso"]
+    graphJSON = Graph().graph_bar_conso(conso["elec"], conso["gaz"])
+    total = conso["elec"] + conso["gaz"]
+
+    info_region = json.loads(reponse.text)["info_region"]
+    graphJSON2 = Graph().graph_sunburst_info_region(info_region)
+
+    return render_template("index.html", region=all_region["all_region"], plot=graphJSON, plot2=graphJSON2, total=total, reg=dpt)
+
 
 if __name__ == "__main__" :
     app.run(debug=True, port=5001)
