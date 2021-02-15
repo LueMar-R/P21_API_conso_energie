@@ -47,5 +47,4 @@ Requirements :
 * `pip install plotly`
 ______
 
-Lien vers le tableau Trello : https://trello.com/b/Q6TWe6fp/energie
 
