@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{data[0]['fields']['libelle_region']}}</h1>
+
+<div id="page">
+    {% for reg in data : %}
+    <h4>{{reg['fields']['libelle_commune']}}</h4>
+    <div id="liste">
+        <ul class="list-group">
+            <li class="list-group-item">filière : {{reg['fields']['filiere']}}</li>
+            <li class="list-group-item">opérateur : {{reg['fields']['operateur']}}</li>
+            <li class="list-group-item">pdl : {{reg['fields']['pdl']}}</li>
+            <li class="list-group-item">département : {{reg['fields']['libelle_departement']}}</li>
+            <li class="list-group-item">année : {{reg['fields']['annee']}}</li>
+            <li class="list-group-item">secteur : {{reg['fields']['libelle_grand_secteur']}}</li>
+            <li class="list-group-item">conso : {{reg['fields']['conso']}}</li>
+            <li class="list-group-item">numero d'enregistrement: {{reg['recordid']}}</li>
+        </ul>
+    </div>
+    {% endfor %}
+    <div id="clavier">
+        <fieldset>
+        </fieldset>
+    </div>
+</div>
+
+
+{% endblock %}
